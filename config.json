@@ -1,0 +1,9 @@
+{
+    "prefix": "INSERT-PREFIX-HERE",
+    "token": "INSERT-TOKEN-HERE",
+    "botUserID": "INSERT-BOT-USERID-HERE",
+    "greenColor": "FBAA02",
+    "redColor": "#d63838",
+    "version": "4.0 Stable Release",
+    "owner": "INSERT-YOUR-USERID-HERE"
+}
