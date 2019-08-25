@@ -16,7 +16,6 @@ exports.run = (client, message, args) => {
     let helpEmbed = createEmbed('**Help Menu**', '', greenColor, message.author)
     .addField('__User Commands__',`${cmds}`)
     .addField('__Other Bot Commands__', `${prefix}info\n${prefix}feedback **[**Feedback Message**]**`)
-    .addField('__Bot Expiration Date__', `Expires in ${getCountdown()}`);
     try {
         message.author.send(helpEmbed);
         return message.channel.send(createEmbed(`**Success**`, `Help sent in your DMs.`, greenColor, message.author));

@@ -3,7 +3,6 @@ const createEmbed = require('./../functions/createEmbed.js');
 const numberWithCommas = require('./../functions/numberWithCommas.js');
 const getTotalGuildMembers = require('./../functions/getTotalGuildMembers.js');
 const getTotalGuilds = require('./../functions/getTotalGuilds.js');
-const getCountdown = require('./../functions/getCountdown.js');
 const {prefix, greenColor, redColor, owner, version} = require('./../config.json');
 exports.run = (client, message, args) => {
     console.log(`+info.js ${args.length} args`)
@@ -24,7 +23,6 @@ exports.run = (client, message, args) => {
     .addBlankField(false)
     .addField('**Uptime**', `**${Math.floor(days)}** days, **${Math.floor(hours)}** hours, **${Math.floor(minutes)}** minutes and **${Math.floor(seconds)}** seconds.`)
     .setDescription(`Currently Listening to ${numberWithCommas(getTotalGuildMembers(client))} Members across ${numberWithCommas(getTotalGuilds(client))} Servers.`)
-    .addField('__Bot Expiration Date__', `**Expires in** ${getCountdown()}`);
     try {
         message.author.send(infoEmbed);
         return message.channel.send(createEmbed(`**Success**`, `Info sent in your DMs`, greenColor, message.author));
