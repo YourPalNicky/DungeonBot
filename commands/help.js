@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const createEmbed = require('./../functions/createEmbed.js');
-const getCountdown = require('./../functions/getCountdown.js');
 const {prefix, greenColor, redColor} = require('./../config.json');
 const cmds = (
       `${prefix}calc **[**Current Power**]** **[**Current Upgrades**]** **[**Total Upgrades**]**`
