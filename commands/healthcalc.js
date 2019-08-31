@@ -5,7 +5,7 @@ const {prefix, greenColor, redColor} = require('./../config.json');
 
 exports.run = (client, message, args) => {
     console.log(`+healthcalc.js ${args.length} args`);
-    if (args.length > 4) {
+    if (args.length > 2) {
         let currentHealth = Math.round(Number(args[0].replace(/,/g, "")));
         let currentPoints = Math.round(Number(args[1].replace(/,/g, "")));
         let totalPoints = Math.round(Number(args[2].replace(/,/g, "")));
