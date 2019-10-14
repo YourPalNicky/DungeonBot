@@ -1,9 +1,8 @@
-const Discord = require('discord.js');
 const createEmbed = require('./../functions/createEmbed.js');
 const numberWithCommas = require('./../functions/numberWithCommas');
-const {prefix, greenColor, redColor} = require('./../config.json');
+const { greenColor } = require('./../config.json');
 exports.run = (client, message, args) => {
-    console.log(`+session.js ${args.length} args`)
+    console.log(`+session.js ${args.length} args`);
     let totalSeconds = (client.uptime / 1000);
     let totalDays = Math.floor(totalSeconds / 86400);
     let totalHours = Math.floor(totalSeconds / 3600);

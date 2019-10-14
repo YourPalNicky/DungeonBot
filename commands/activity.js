@@ -1,10 +1,10 @@
 const fs = require('fs');
 const createEmbed = require('./../functions/createEmbed.js');
-const { owner, redColor, greenColor } = require('./../config.json');
+const { owners, redColor, greenColor } = require('./../config.json');
 const statusRefresh = require('./../functions/statusRefresh.js');
 exports.run = (client, message, args) => {
     console.log('+activity.js');
-    if(message.author.id == owner) {
+    if (owners.includes(message.author.id)) {
         let data = JSON.parse(fs.readFileSync('./variables.json'));
         let activity = data['activity'];
         var writeActivity;

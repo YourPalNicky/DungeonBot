@@ -1,6 +1,5 @@
-const Discord = require('discord.js');
 const createEmbed = require('./../functions/createEmbed.js');
-const {prefix, greenColor, redColor, owner} = require('./../config.json');
+const { greenColor, redColor, owner } = require('./../config.json');
 exports.run = (client, message, args) => {
     console.log(`+say.js ${args.length} args`)
     if (message.author.id == owner) {

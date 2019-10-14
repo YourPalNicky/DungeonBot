@@ -1,4 +1,3 @@
-const Discord = require('discord.js');
 const createEmbed = require('./../functions/createEmbed.js');
 const numberWithCommas = require('./../functions/numberWithCommas.js');
 const {prefix, greenColor, redColor} = require('./../config.json');
@@ -19,7 +18,8 @@ exports.run = (client, message, args) => {
                     if (currentPointsMath >= totalPoints || healthMath >= desiredHealth) break; 
                     currentPointsMath++;
                 };
-                var responseA; var responseB;
+                var responseA;
+                var responseB;
                 (healthMath >= desiredHealth) ? responseA = 'You will reach your desired health.' : responseA = 'You will not reach your desired health.';
                 (currentPointsMath == totalPoints) ? responseB = `all of your` : responseB = `${numberWithCommas(currentPointsMath)}/${numberWithCommas(totalPoints)}`;
                 let embed = createEmbed('**Health Calculator**', `To get from __${numberWithCommas(Math.round(currentHealth))} Health__ **=>** __${numberWithCommas(Math.round(healthMath))} Health__, you must use ${responseB} points. ${responseA}`, greenColor, message.author)

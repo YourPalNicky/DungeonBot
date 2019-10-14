@@ -1,4 +1,3 @@
-const Discord = require('discord.js');
 const createEmbed = require('./../functions/createEmbed.js');
 const numberWithCommas = require('./../functions/numberWithCommas.js');
 const getRequiredExperience = require('./../functions/getRequiredExperience.js');

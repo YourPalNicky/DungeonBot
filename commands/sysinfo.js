@@ -1,11 +1,11 @@
 const Discord = require('discord.js');
 const createEmbed = require('./../functions/createEmbed.js');
-const {prefix, greenColor, redColor, owner} = require('./../config.json');
+const {greenColor, redColor, owners} = require('./../config.json');
 const numberWithCommas = require('./../functions/numberWithCommas.js');
 const si = require('systeminformation');
 exports.run = (client, message, args) => {
     console.log(`+sysinfo.js ${args.length} args`)
-    if (message.author.id == owner) {
+    if (owners.includes(message.author.id)) {
         if (!(args[0] == null) && !(args[0] == undefined)) {
             if (args[0].toLowerCase().startsWith(`cpu`)) {
                 si.cpu(function(data) {

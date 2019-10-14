@@ -1,4 +1,3 @@
-const Discord = require('discord.js');
 module.exports = function (level, level2) {
     console.log('+getRequiredExperience.js')
     let xp = 0;

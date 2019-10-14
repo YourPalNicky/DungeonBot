@@ -1,7 +1,6 @@
-const Discord = require('discord.js');
 const createEmbed = require('./../functions/createEmbed.js');
 const numberWithCommas = require('./../functions/numberWithCommas.js');
-const {prefix, greenColor, redColor} = require('./../config.json');
+const { prefix, greenColor, redColor } = require('./../config.json');
 exports.run = (client, message, args) => {
     console.log(`+sellcalc.js ${args.length} args`)
     if (args.length > 2) {

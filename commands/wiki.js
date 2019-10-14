@@ -1,7 +1,6 @@
-const Discord = require('discord.js');
 const createEmbed = require('./../functions/createEmbed.js');
 const titleCase = require("./../functions/titleCase.js");
-const {prefix, greenColor, redColor} = require('./../config.json');
+const { greenColor } = require('./../config.json');
 exports.run = (client, message, args) => {
     console.log(`+wiki.js ${args.length} args`)
     if (args.length >= 1 && args.length <= 7)  {

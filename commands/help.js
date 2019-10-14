@@ -1,4 +1,3 @@
-const Discord = require('discord.js');
 const createEmbed = require('./../functions/createEmbed.js');
 const {prefix, greenColor, redColor} = require('./../config.json');
 const cmds = (
