@@ -52,7 +52,7 @@ exports.run = (client, message, args) => {
                 .addField('**Upgrade Cost** <:coins:580167996694331402>', `${numberWithCommas(totalCost)}`, true)
                 .addField('**Base Power** <:swords:580162306533752867>', `${basePower}`, true)
                 return message.channel.send(embed);
-            } else return message.channel.send(createEmbed('**<:error:580162235624849418> Error <:error:580162235624849418>**', 'Please stay within normal values. The power must be under 1,000,000 and the upgrades must be under 10,000', redColor, message.author));
+            } else return message.channel.send(createEmbed('**<:error:580162235624849418> Error <:error:580162235624849418>**', 'Please stay within normal values. The power must be under 10,000,000 and the upgrades must be under 1,000,000', redColor, message.author));
         } else return message.channel.send(createEmbed('**<:error:580162235624849418> Error <:error:580162235624849418>**', 'One of the values is undefined or is null. Please type all values correctly.', redColor, message.author));
     } else return message.channel.send(createEmbed('**Item Calc**', `${prefix}calc **[**Current Power**]** **[**Current Upgrades**]** **[**Total Upgrades**]**`, redColor, message.author));
 };
