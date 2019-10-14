@@ -1,17 +1,15 @@
-Thanks for downloading Dungeon Bot v.2
+Thanks for downloading Dungeon Bot v.2.1
 These are the basic instructions for bot use and easy operation.
-
 A) Installation Guide
 	1) First you will need a bot token and bot user id.
 		Get these by visiting https://discordapp.com/developers/applications/ and creating a bot user.
-	2) Copy the bot token and user id to the file called "config.json". You will also need to create a prefix and fill in your user id as well. (NP++/VSCode recommended.)
-
+	2) Copy the bot token and userID to the file called "config.json". You will also need to create a prefix and fill in your userID as well. If you'd like to have more than one user be owner of the bot, insert multiple userID's within the config.json owner list. (NP++/VSCode recommended.)
 	3) Install node.js on your operating system.
 	4) In the main file system that includes the file "index.js" shift right-click the file and open with powershell/cmd. You will need to install some extentions first for the bot to operate correctly. 
 		A) Run "npm install discord.js --save"
 		B) Run "npm install fs --save"
 		C) Run "npm install systeminformation --save"
-
+		D) Run "npm install enmap --save"
 B) Running the Bot
 	1) Run either, StartBot.bat or use the Start Dungeon Bot shortcut. (If this fails, shift right-click the main file system that contains "index.js" and type "node index.js" to start the bot)
 	2) The bot should be fully functional now. From this point you need to create an invite link for the bot. I recommend using "https://discordapi.com/permissions.html" as a helpful tool for generating your invite link.
