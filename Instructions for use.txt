@@ -11,6 +11,7 @@ A) Installation Guide
 		A) Run "npm install discord.js --save"
 		B) Run "npm install fs --save"
 		C) Run "npm install systeminformation --save"
+		D) Run "npm install enmap --save"
 
 B) Running the Bot
 	1) Run either, StartBot.bat or use the Start Dungeon Bot shortcut. (If this fails, shift right-click the main file system that contains "index.js" and type "node index.js" to start the bot)

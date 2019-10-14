@@ -10,36 +10,50 @@ exports.run = (client, message, args) => {
         let currentUpgrades = Math.round(Number(args[1].replace(/,/g, "")));
         let totalUpgrades = Math.round(Number(args[2].replace(/,/g, "")));
         if (power != null && currentUpgrades != null && totalUpgrades != null) {
-            if (power <= 999999 && power > 0 && currentUpgrades <= 9999 && totalUpgrades <= 9999) {
-                if (currentUpgrades < totalUpgrades) {
-                    let totalCost = 0;
-                    let increasePerUpgrade = 0;
-                    for (x = currentUpgrades; x < totalUpgrades; x++) {
-                        (x < 25) ? increasePerUpgrade = upgradeList[x] : increasePerUpgrade = 2945 + 220 * (x-24);
-                        if (increasePerUpgrade > 100000) increasePerUpgrade = 100000;
+            if (power <= 9999999 && power > 0 && currentUpgrades <= 999999 && totalUpgrades <= 999999 && currentUpgrades < totalUpgrades) {
+                let totalCost = 0;
+                let increasePerUpgrade = 0;
+                for (x = currentUpgrades; x < totalUpgrades; x++) {
+                    (x < 25) ? increasePerUpgrade = upgradeList[x] : increasePerUpgrade = 2945 + 220 * (x-24);
+                    var end = false;
+                    if (increasePerUpgrade > 100000) {
+                        increasePerUpgrade = 100000;
+                        totalCost += increasePerUpgrade * totalUpgrades - x;
+                        end = true;
+                    } else {
                         totalCost += increasePerUpgrade;
                     };
-                    var totalPower = power;
-                    var upgradeLevel = 0;
-                    for (let x = currentUpgrades; x < totalUpgrades; x++) {
-                        upgradeLevel = totalPower * 0.05;
-                        (upgradeLevel >= 9) ? increasePerUpgrade = 10 : increasePerUpgrade = Math.floor(totalPower * 0.05 + 1);
+                    if (end) break;
+                };
+
+                var totalPower = power;
+                var upgradeLevel = 0;
+                for (let x = currentUpgrades; x < totalUpgrades; x++) {
+                    upgradeLevel = totalPower * 0.05;
+                    var end = false;
+                    if (upgradeLevel >= 9) {
+                        increasePerUpgrade = 10
+                        totalPower += increasePerUpgrade * totalUpgrades - x;
+                        end = true;
+                    } else {
+                        increasePerUpgrade = Math.floor(totalPower * 0.05 + 1);
                         totalPower += increasePerUpgrade;
                     };
-                    var basePower = power;
-                    for (let y = currentUpgrades; y > 0; y = y-1) {
-                        if (y < 0) break;
-                        (basePower * 0.05 >= 9) ? increasePerUpgrade = 10 : increasePerUpgrade = Math.floor(basePower * 0.05 + 1);
-                        basePower = basePower - increasePerUpgrade;
-                        if (Math.round(basePower) <= 0) break;
-                    };
-                    if (!basePower) basePower = '0'; else basePower = numberWithCommas(Math.round(basePower));
-                    let embed = new createEmbed('**Calculation Complete**', '', greenColor, message.author)
-                    .addField('**Total Power** <:swords:580162306533752867>', `${numberWithCommas(totalPower)}`, true)
-                    .addField('**Upgrade Cost** <:coins:580167996694331402>', `${numberWithCommas(totalCost)}`, true)
-                    .addField('**Base Power** <:swords:580162306533752867>', `${basePower}`, true)
-                    return message.channel.send(embed);
-                } else return message.channel.send(createEmbed('**<:error:580162235624849418> Error <:error:580162235624849418>**', 'You cannot downgrade an item.', redColor, message.author));
+                    if (end) break;
+                };
+                var basePower = power;
+                for (let y = currentUpgrades; y > 0; y = y-1) {
+                    if (y < 0) break;
+                    (basePower * 0.05 >= 9) ? increasePerUpgrade = 10 : increasePerUpgrade = Math.floor(basePower * 0.05 + 1);
+                    basePower = basePower - increasePerUpgrade;
+                    if (Math.round(basePower) <= 0) break;
+                };
+                if (!basePower) basePower = '0'; else basePower = numberWithCommas(Math.round(basePower));
+                let embed = new createEmbed('**Calculation Complete**', '', greenColor, message.author)
+                .addField('**Total Power** <:swords:580162306533752867>', `${numberWithCommas(totalPower)}`, true)
+                .addField('**Upgrade Cost** <:coins:580167996694331402>', `${numberWithCommas(totalCost)}`, true)
+                .addField('**Base Power** <:swords:580162306533752867>', `${basePower}`, true)
+                return message.channel.send(embed);
             } else return message.channel.send(createEmbed('**<:error:580162235624849418> Error <:error:580162235624849418>**', 'Please stay within normal values. The power must be under 1,000,000 and the upgrades must be under 10,000', redColor, message.author));
         } else return message.channel.send(createEmbed('**<:error:580162235624849418> Error <:error:580162235624849418>**', 'One of the values is undefined or is null. Please type all values correctly.', redColor, message.author));
     } else return message.channel.send(createEmbed('**Item Calc**', `${prefix}calc **[**Current Power**]** **[**Current Upgrades**]** **[**Total Upgrades**]**`, redColor, message.author));
