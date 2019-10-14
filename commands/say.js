@@ -3,8 +3,7 @@ const { greenColor, redColor, owners } = require('./../config.json');
 exports.run = (client, message, args) => {
     console.log(`+say.js ${args.length} args`)
     if (owners.includes(message.author.id)) {
-        let channel = args[0];
-        if (channel) {
+        if (args[0]) {
             args.shift();
             let sayMessage = args.join(' ');
             let elements = sayMessage.split("|");

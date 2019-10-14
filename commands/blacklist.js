@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const fs = require('fs');
 const createEmbed = require('./../functions/createEmbed.js');
-const {prefix, greenColor, redColor, owners} = require('./../config.json');
+const { greenColor, redColor, owners } = require('./../config.json');
 exports.run = (client, message, args) => {
     console.log(`+blacklist.js ${args.length} args`)
     if (owners.includes(message.author.id)) {

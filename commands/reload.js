@@ -1,8 +1,8 @@
 const Discord = require('discord.js');
-const { owner, greenColor} = require('./../config.json');
+const { owners, greenColor} = require('./../config.json');
 const sleep = require('./../functions/sleep.js');
 exports.run = (client, message, args) => {
-    if (message.author.id == owner) {
+    if (owners.includes(message.author.id)) {
         if(!args || args.length < 1) return message.reply("Must provide a command name to reload.");
         const commandName = args[0];
         // Check if the command exists and is valid
