@@ -1,6 +1,5 @@
 const checkUser = require('./../functions/checkUser.js');
 const talkedRecently = new Set();
-const createEmbed = require('./../functions/createEmbed.js');
 const { chatcooldown } = require('./../config.json');
 module.exports = (client, message) => {
   if (message.author.bot) return;
@@ -15,7 +14,7 @@ module.exports = (client, message) => {
       talkedRecently.add(message.author.id);
       setTimeout(() => {
         talkedRecently.delete(message.author.id);
-      }, chatcoondown * 1000);
+      }, chatcooldown * 1000);
     };
   };
   // Our standard argument/command name definition.
