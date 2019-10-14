@@ -1,8 +1,8 @@
 const createEmbed = require('./../functions/createEmbed.js');
-const { greenColor, redColor, owner } = require('./../config.json');
+const { greenColor, redColor, owners } = require('./../config.json');
 exports.run = (client, message, args) => {
     console.log(`+say.js ${args.length} args`)
-    if (message.author.id == owner) {
+    if (owners.includes(message.author.id)) {
         let channel = args[0];
         if (channel) {
             args.shift();
