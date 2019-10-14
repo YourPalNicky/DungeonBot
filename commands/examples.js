@@ -9,6 +9,12 @@ exports.run = (client, message, args) => {
     .addField("Cost and Stat Calculator:", `Let's say Vinny has an item with 1,000 power of one kind.\nIf it is currently upgraded 50 times and has 500 upgrades total, then he would say:\n\n\`${prefix}calc 1000 50 500\`\n\nThe upgrade cost is how much money it costs to upgrade it from 50 to 500 and the total power is how much power it will have once it is maxed.`)
     .addBlankField()
     .addField(`Experience and Level Calculator:`, `To determind how much XP you need to level up from a level to a level, use\n\`${prefix}levelcalc [From Level] [To Level]\`\n\nThe XP given back is the amount of XP you need to reach that level.`)
-    message.author.send(exampleEmbed);
-    return message.channel.send(createEmbed(`**Success**`, `Command examples sent in your DMs.`, greenColor, message.author));
+
+    try {
+        message.author.send(exampleEmbed)
+        .catch(console.error);
+        return message.channel.send(createEmbed(`**Success**`, `Command examples sent in your DMs.`, greenColor, message.author));
+    } catch (ex) {
+        return message.channel.send(createEmbed('**<:error:580162235624849418> Error <:error:580162235624849418>**', "Unable to send message, make sure your DMs are turned on.", redColor, message.author));
+    };
 };

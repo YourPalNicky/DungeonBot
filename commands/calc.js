@@ -9,10 +9,14 @@ exports.run = (client, message, args) => {
         let power = Math.round(Number(args[0].replace(/,/g, "")));
         let currentUpgrades = Math.round(Number(args[1].replace(/,/g, "")));
         let totalUpgrades = Math.round(Number(args[2].replace(/,/g, "")));
+        let totalCost = 0;
+        let increasePerUpgrade = 0;
+        var upgradeLevel = 0;
         if (power != null && currentUpgrades != null && totalUpgrades != null) {
             if (power <= 9999999 && power > 0 && currentUpgrades <= 999999 && totalUpgrades <= 999999 && currentUpgrades < totalUpgrades) {
-                let totalCost = 0;
-                let increasePerUpgrade = 0;
+                var totalPower = power;
+                var basePower = power;
+                
                 for (x = currentUpgrades; x < totalUpgrades; x++) {
                     (x < 25) ? increasePerUpgrade = upgradeList[x] : increasePerUpgrade = 2945 + 220 * (x-24);
                     var end = false;
@@ -20,14 +24,9 @@ exports.run = (client, message, args) => {
                         increasePerUpgrade = 100000;
                         totalCost += increasePerUpgrade * totalUpgrades - x;
                         end = true;
-                    } else {
-                        totalCost += increasePerUpgrade;
-                    };
+                    } else totalCost += increasePerUpgrade;
                     if (end) break;
                 };
-
-                var totalPower = power;
-                var upgradeLevel = 0;
                 for (let x = currentUpgrades; x < totalUpgrades; x++) {
                     upgradeLevel = totalPower * 0.05;
                     var end = false;
@@ -41,7 +40,6 @@ exports.run = (client, message, args) => {
                     };
                     if (end) break;
                 };
-                var basePower = power;
                 for (let y = currentUpgrades; y > 0; y = y-1) {
                     if (y < 0) break;
                     (basePower * 0.05 >= 9) ? increasePerUpgrade = 10 : increasePerUpgrade = Math.floor(basePower * 0.05 + 1);
