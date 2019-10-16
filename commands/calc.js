@@ -21,7 +21,7 @@ exports.run = (client, message, args) => {
                     (x < 25) ? increasePerUpgrade = upgradeList[x] : increasePerUpgrade = 2945 + 220 * (x-24);
                     var end = false;
                     if (increasePerUpgrade > 100000) {
-                        totalCost += 100000(totalUpgrades - x);
+                        totalCost += 100000*(totalUpgrades - x);
                         end = true;
                     } else totalCost += increasePerUpgrade;
                     if (end) break;
@@ -30,7 +30,7 @@ exports.run = (client, message, args) => {
                     upgradeLevel = totalPower * 0.05;
                     var end = false;
                     if (upgradeLevel >= 9) {
-                        totalPower += 10(totalUpgrades - x);
+                        totalPower += 10*(totalUpgrades - x);
                         end = true;
                     } else {
                         increasePerUpgrade = Math.floor(totalPower * 0.05 + 1);
