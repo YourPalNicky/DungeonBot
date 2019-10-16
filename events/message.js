@@ -6,7 +6,6 @@ module.exports = (client, message) => {
 
   if (message.content.toLowerCase().indexOf(client.config.prefix) !== 0) return;
   if (checkUser(message)) return;
-
   if (chatcooldown != 0) {
     if (talkedRecently.has(message.author.id)) {
       message.channel.send(`<@${message.author.id}> Slow down! You are on a cooldown.`); return;
