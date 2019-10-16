@@ -11,39 +11,40 @@ exports.run = (client, message, args) => {
         let totalUpgrades = Math.round(Number(args[2].replace(/,/g, "")));
         let totalCost = 0;
         let increasePerUpgrade = 0;
-        var upgradeLevel = 0;
+        let upgradeLevel = 0;
         if (power != null && currentUpgrades != null && totalUpgrades != null) {
             if (power <= 9999999 && power > 0 && currentUpgrades <= 999999 && totalUpgrades <= 999999 && currentUpgrades < totalUpgrades) {
-                var totalPower = power;
-                var basePower = power;
+                let totalPower = power;
+                let basePower = power;
                 
                 for (x = currentUpgrades; x < totalUpgrades; x++) {
                     (x < 25) ? increasePerUpgrade = upgradeList[x] : increasePerUpgrade = 2945 + 220 * (x-24);
-                    var end = false;
                     if (increasePerUpgrade > 100000) {
-                        totalCost += 100000*(totalUpgrades - x);
-                        end = true;
+                        totalCost += 100000 * (totalUpgrades - x);
+                        break;
                     } else totalCost += increasePerUpgrade;
-                    if (end) break;
                 };
+
                 for (let x = currentUpgrades; x < totalUpgrades; x++) {
                     upgradeLevel = totalPower * 0.05;
-                    var end = false;
                     if (upgradeLevel >= 9) {
-                        totalPower += 10*(totalUpgrades - x);
-                        end = true;
-                    } else {
-                        increasePerUpgrade = Math.floor(totalPower * 0.05 + 1);
-                        totalPower += increasePerUpgrade;
+                        totalPower += 10 * (totalUpgrades - x);
+                        break;
+                    } else totalPower += Math.floor(totalPower * 0.05 + 1);
+                };
+
+                try {
+                    for (let y = currentUpgrades; y > 0; y = y-1) {
+                        if (y < 0) break;
+                        (basePower * 0.05 >= 9) ? increasePerUpgrade = 10 : increasePerUpgrade = Math.floor(basePower * 0.05 + 1);
+                        basePower = basePower - increasePerUpgrade;
+                        if (Math.round(basePower) <= 0) break;
                     };
-                    if (end) break;
+                } catch (ex) {
+                    console.log('Basepower Calculator Timeout/Extended Operation took too long to calculate. Consider removing this option.');
+                    basePower = "Basepower Operation Timeout";
                 };
-                for (let y = currentUpgrades; y > 0; y = y-1) {
-                    if (y < 0) break;
-                    (basePower * 0.05 >= 9) ? increasePerUpgrade = 10 : increasePerUpgrade = Math.floor(basePower * 0.05 + 1);
-                    basePower = basePower - increasePerUpgrade;
-                    if (Math.round(basePower) <= 0) break;
-                };
+
                 if (!basePower) basePower = '0'; else basePower = numberWithCommas(Math.round(basePower));
                 let embed = new createEmbed('**Calculation Complete**', '', greenColor, message.author)
                 .addField('**Total Power** <:swords:580162306533752867>', `${numberWithCommas(totalPower)}`, true)
