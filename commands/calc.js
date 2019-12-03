@@ -34,7 +34,7 @@ exports.run = (client, message, args) => {
                 };
 
                 try {
-                    for (let y = currentUpgrades; y > 0; y = y-1) {
+                    for (let y = currentUpgrades; y > 0; y -= 1) {
                         if (y < 0) break;
                         (basePower * 0.05 >= 9) ? increasePerUpgrade = 10 : increasePerUpgrade = Math.floor(basePower * 0.05 + 1);
                         basePower = basePower - increasePerUpgrade;
